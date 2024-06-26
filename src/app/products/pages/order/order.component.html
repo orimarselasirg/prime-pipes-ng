@@ -1,0 +1,46 @@
+<p-panel header="Pipes customs" class="p-2">
+  <h1>Pipes Personalizados</h1>
+  <p>
+    Pipes personalizados - made by {{'myself' | toogleCase: isUppercase}}
+  </p>
+
+</p-panel>
+
+<p-toolbar>
+  <div class="p-toolbar-group-start">
+    <p-button icon="pi pi-plus" class="mr-2" label="toogle case" (click)="changeUpperCase()"/>
+    <p-button icon="pi pi-print" class="mr-2" label="por nombre" (onClick)="changeOrder('name')"/>
+    <p-button icon="pi pi-upload" class="mr-2" label="por volar" (onClick)="changeOrder('canFly')"/>
+    <p-button icon="pi pi-upload" class="mr-2" label="por color" (onClick)="changeOrder('color')"/>
+  </div>
+  <div class="p-toolbar-group-end">
+    <p-button icon="pi pi-upload" label="save"/>
+  </div>
+</p-toolbar>
+
+<div class="grid">
+  <div class="col mt-2">
+    <p-panel header="Lista de heroes">
+      <p-table [value]="heroes | sortBy: orderBy " [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Code</th>
+                <th>Nombre</th>
+                <th>puede volar?</th>
+                <th>Color</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-hero>
+            <tr>
+                <td>{{ '1' }}</td>
+                <td>{{ hero.name }}</td>
+                <td>{{ hero.canFly | booleanParser }}</td>
+                <td>{{ hero.color }}</td>
+            </tr>
+        </ng-template>
+      </p-table>
+    </p-panel>
+
+  </div>
+</div>
+
